@@ -1,0 +1,152 @@
+{
+  "name": "nura",
+  "date": "2026-05-24 14:21",
+  "profile": {
+    "interests": [
+      "Helping and communicating with people",
+      "Technology and computers"
+    ],
+    "skills": [
+      "Very comfortable \u2014 I enjoy coding or technical work",
+      "Empathy and understanding people"
+    ],
+    "work_style": [
+      "Structured \u2014 I prefer clear processes and routines",
+      "I like some challenge but not constant urgency"
+    ],
+    "values": [
+      "Job stability and security",
+      "Create culture through art or media"
+    ],
+    "raw_answers": {
+      "work_preference": {
+        "question": "Which of these sounds most like your ideal work?",
+        "answer": "Helping and communicating with people",
+        "dimension": "interests"
+      },
+      "subject_passion": {
+        "question": "Which subject or field excites you the most?",
+        "answer": "Technology and computers",
+        "dimension": "interests"
+      },
+      "tech_comfort": {
+        "question": "How comfortable are you with technology and programming?",
+        "answer": "Very comfortable \u2014 I enjoy coding or technical work",
+        "dimension": "skills"
+      },
+      "strength": {
+        "question": "What do people most often praise you for?",
+        "answer": "Empathy and understanding people",
+        "dimension": "skills"
+      },
+      "work_style": {
+        "question": "Which work environment fits you best?",
+        "answer": "Structured \u2014 I prefer clear processes and routines",
+        "dimension": "work_style"
+      },
+      "work_style_pace": {
+        "question": "How do you handle pressure and deadlines?",
+        "answer": "I like some challenge but not constant urgency",
+        "dimension": "work_style"
+      },
+      "core_value": {
+        "question": "What matters most to you in a career?",
+        "answer": "Job stability and security",
+        "dimension": "values"
+      },
+      "work_impact": {
+        "question": "How do you want your work to affect the world?",
+        "answer": "Create culture through art or media",
+        "dimension": "values"
+      }
+    }
+  },
+  "career_matches": [
+    [
+      "Software Engineer",
+      90
+    ],
+    [
+      "UX/UI Designer",
+      85
+    ],
+    [
+      "Cybersecurity Analyst",
+      85
+    ],
+    [
+      "Data Scientist",
+      80
+    ],
+    [
+      "Psychologist / Counselor",
+      80
+    ],
+    [
+      "Product Manager",
+      70
+    ],
+    [
+      "Content Creator / Writer",
+      70
+    ],
+    [
+      "Business Analyst",
+      60
+    ],
+    [
+      "Mechanical Engineer",
+      50
+    ],
+    [
+      "Doctor / Medical Professional",
+      40
+    ]
+  ],
+  "user_skills": [
+    "Python or Java programming",
+    "Database knowledge (SQL)"
+  ],
+  "answers": {
+    "work_preference": {
+      "question": "Which of these sounds most like your ideal work?",
+      "answer": "Helping and communicating with people",
+      "dimension": "interests"
+    },
+    "subject_passion": {
+      "question": "Which subject or field excites you the most?",
+      "answer": "Technology and computers",
+      "dimension": "interests"
+    },
+    "tech_comfort": {
+      "question": "How comfortable are you with technology and programming?",
+      "answer": "Very comfortable \u2014 I enjoy coding or technical work",
+      "dimension": "skills"
+    },
+    "strength": {
+      "question": "What do people most often praise you for?",
+      "answer": "Empathy and understanding people",
+      "dimension": "skills"
+    },
+    "work_style": {
+      "question": "Which work environment fits you best?",
+      "answer": "Structured \u2014 I prefer clear processes and routines",
+      "dimension": "work_style"
+    },
+    "work_style_pace": {
+      "question": "How do you handle pressure and deadlines?",
+      "answer": "I like some challenge but not constant urgency",
+      "dimension": "work_style"
+    },
+    "core_value": {
+      "question": "What matters most to you in a career?",
+      "answer": "Job stability and security",
+      "dimension": "values"
+    },
+    "work_impact": {
+      "question": "How do you want your work to affect the world?",
+      "answer": "Create culture through art or media",
+      "dimension": "values"
+    }
+  }
+}

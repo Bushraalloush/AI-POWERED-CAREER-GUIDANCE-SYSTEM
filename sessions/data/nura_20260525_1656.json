@@ -1,0 +1,214 @@
+{
+  "name": "nura",
+  "date": "2026-05-25 16:56",
+  "profile": {
+    "interests": [
+      "Helping and communicating with people",
+      "Technology and computers"
+    ],
+    "skills": [
+      "Neutral \u2014 I can manage but it's not my strength",
+      "Communication and leadership"
+    ],
+    "work_style": [
+      "Dynamic \u2014 I like variety and switching tasks",
+      "I prefer steady, predictable workloads"
+    ],
+    "values": [
+      "High salary and financial growth",
+      "Build technology that improves lives"
+    ],
+    "raw_answers": {
+      "work_preference": {
+        "question": "Which of these sounds most like your ideal work?",
+        "answer": "Helping and communicating with people",
+        "dimension": "interests"
+      },
+      "subject_passion": {
+        "question": "Which subject or field excites you the most?",
+        "answer": "Technology and computers",
+        "dimension": "interests"
+      },
+      "tech_comfort": {
+        "question": "How comfortable are you with technology and programming?",
+        "answer": "Neutral \u2014 I can manage but it's not my strength",
+        "dimension": "skills"
+      },
+      "strength": {
+        "question": "What do people most often praise you for?",
+        "answer": "Communication and leadership",
+        "dimension": "skills"
+      },
+      "work_style": {
+        "question": "Which work environment fits you best?",
+        "answer": "Dynamic \u2014 I like variety and switching tasks",
+        "dimension": "work_style"
+      },
+      "work_style_pace": {
+        "question": "How do you handle pressure and deadlines?",
+        "answer": "I prefer steady, predictable workloads",
+        "dimension": "work_style"
+      },
+      "core_value": {
+        "question": "What matters most to you in a career?",
+        "answer": "High salary and financial growth",
+        "dimension": "values"
+      },
+      "work_impact": {
+        "question": "How do you want your work to affect the world?",
+        "answer": "Build technology that improves lives",
+        "dimension": "values"
+      }
+    }
+  },
+  "career_matches": [
+    [
+      "Product Manager",
+      92,
+      {
+        "interests": 95,
+        "skills": 95,
+        "work_style": 90,
+        "values": 90
+      }
+    ],
+    [
+      "UX/UI Designer",
+      90,
+      {
+        "interests": 95,
+        "skills": 80,
+        "work_style": 90,
+        "values": 80
+      }
+    ],
+    [
+      "Cybersecurity Analyst",
+      88,
+      {
+        "interests": 85,
+        "skills": 90,
+        "work_style": 85,
+        "values": 90
+      }
+    ],
+    [
+      "Software Engineer",
+      87,
+      {
+        "interests": 90,
+        "skills": 85,
+        "work_style": 88,
+        "values": 82
+      }
+    ],
+    [
+      "Data Scientist",
+      85,
+      {
+        "interests": 80,
+        "skills": 90,
+        "work_style": 80,
+        "values": 85
+      }
+    ],
+    [
+      "Business Analyst",
+      80,
+      {
+        "interests": 70,
+        "skills": 85,
+        "work_style": 80,
+        "values": 80
+      }
+    ],
+    [
+      "Psychologist / Counselor",
+      80,
+      {
+        "interests": 95,
+        "skills": 80,
+        "work_style": 70,
+        "values": 60
+      }
+    ],
+    [
+      "Mechanical Engineer",
+      75,
+      {
+        "interests": 60,
+        "skills": 75,
+        "work_style": 70,
+        "values": 75
+      }
+    ],
+    [
+      "Content Creator / Writer",
+      75,
+      {
+        "interests": 80,
+        "skills": 70,
+        "work_style": 80,
+        "values": 60
+      }
+    ],
+    [
+      "Doctor / Medical Professional",
+      70,
+      {
+        "interests": 80,
+        "skills": 70,
+        "work_style": 60,
+        "values": 70
+      }
+    ]
+  ],
+  "user_skills": [
+    "Product roadmapping",
+    "Data analysis",
+    "Stakeholder communication",
+    "Agile & Scrum"
+  ],
+  "answers": {
+    "work_preference": {
+      "question": "Which of these sounds most like your ideal work?",
+      "answer": "Helping and communicating with people",
+      "dimension": "interests"
+    },
+    "subject_passion": {
+      "question": "Which subject or field excites you the most?",
+      "answer": "Technology and computers",
+      "dimension": "interests"
+    },
+    "tech_comfort": {
+      "question": "How comfortable are you with technology and programming?",
+      "answer": "Neutral \u2014 I can manage but it's not my strength",
+      "dimension": "skills"
+    },
+    "strength": {
+      "question": "What do people most often praise you for?",
+      "answer": "Communication and leadership",
+      "dimension": "skills"
+    },
+    "work_style": {
+      "question": "Which work environment fits you best?",
+      "answer": "Dynamic \u2014 I like variety and switching tasks",
+      "dimension": "work_style"
+    },
+    "work_style_pace": {
+      "question": "How do you handle pressure and deadlines?",
+      "answer": "I prefer steady, predictable workloads",
+      "dimension": "work_style"
+    },
+    "core_value": {
+      "question": "What matters most to you in a career?",
+      "answer": "High salary and financial growth",
+      "dimension": "values"
+    },
+    "work_impact": {
+      "question": "How do you want your work to affect the world?",
+      "answer": "Build technology that improves lives",
+      "dimension": "values"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "name": "Bushra",
+  "date": "2026-05-23 14:34",
+  "profile": {
+    "interests": [
+      "Building or fixing things (software, machines, systems)",
+      "Technology and computers"
+    ],
+    "skills": [
+      "Neutral \u2014 I can manage but it's not my strength",
+      "Communication and leadership"
+    ],
+    "work_style": [
+      "Collaborative \u2014 I thrive working with a team",
+      "I perform well under pressure \u2014 it motivates me"
+    ],
+    "values": [
+      "Making a positive impact on society",
+      "Build technology that improves lives"
+    ],
+    "raw_answers": {
+      "work_preference": {
+        "question": "Which of these sounds most like your ideal work?",
+        "answer": "Building or fixing things (software, machines, systems)",
+        "dimension": "interests"
+      },
+      "subject_passion": {
+        "question": "Which subject or field excites you the most?",
+        "answer": "Technology and computers",
+        "dimension": "interests"
+      },
+      "tech_comfort": {
+        "question": "How comfortable are you with technology and programming?",
+        "answer": "Neutral \u2014 I can manage but it's not my strength",
+        "dimension": "skills"
+      },
+      "strength": {
+        "question": "What do people most often praise you for?",
+        "answer": "Communication and leadership",
+        "dimension": "skills"
+      },
+      "work_style": {
+        "question": "Which work environment fits you best?",
+        "answer": "Collaborative \u2014 I thrive working with a team",
+        "dimension": "work_style"
+      },
+      "work_style_pace": {
+        "question": "How do you handle pressure and deadlines?",
+        "answer": "I perform well under pressure \u2014 it motivates me",
+        "dimension": "work_style"
+      },
+      "core_value": {
+        "question": "What matters most to you in a career?",
+        "answer": "Making a positive impact on society",
+        "dimension": "values"
+      },
+      "work_impact": {
+        "question": "How do you want your work to affect the world?",
+        "answer": "Build technology that improves lives",
+        "dimension": "values"
+      }
+    }
+  },
+  "career_matches": [
+    [
+      "Software Engineer",
+      90
+    ],
+    [
+      "Cybersecurity Analyst",
+      85
+    ],
+    [
+      "Data Scientist",
+      80
+    ],
+    [
+      "Mechanical Engineer",
+      80
+    ],
+    [
+      "UX/UI Designer",
+      70
+    ],
+    [
+      "Product Manager",
+      60
+    ],
+    [
+      "Business Analyst",
+      50
+    ],
+    [
+      "Content Creator / Writer",
+      30
+    ],
+    [
+      "Doctor / Medical Professional",
+      20
+    ],
+    [
+      "Psychologist / Counselor",
+      10
+    ]
+  ],
+  "user_skills": [
+    "Python or Java programming",
+    "Data structures & algorithms",
+    "Version control (Git)",
+    "Web development basics"
+  ],
+  "answers": {
+    "work_preference": {
+      "question": "Which of these sounds most like your ideal work?",
+      "answer": "Building or fixing things (software, machines, systems)",
+      "dimension": "interests"
+    },
+    "subject_passion": {
+      "question": "Which subject or field excites you the most?",
+      "answer": "Technology and computers",
+      "dimension": "interests"
+    },
+    "tech_comfort": {
+      "question": "How comfortable are you with technology and programming?",
+      "answer": "Neutral \u2014 I can manage but it's not my strength",
+      "dimension": "skills"
+    },
+    "strength": {
+      "question": "What do people most often praise you for?",
+      "answer": "Communication and leadership",
+      "dimension": "skills"
+    },
+    "work_style": {
+      "question": "Which work environment fits you best?",
+      "answer": "Collaborative \u2014 I thrive working with a team",
+      "dimension": "work_style"
+    },
+    "work_style_pace": {
+      "question": "How do you handle pressure and deadlines?",
+      "answer": "I perform well under pressure \u2014 it motivates me",
+      "dimension": "work_style"
+    },
+    "core_value": {
+      "question": "What matters most to you in a career?",
+      "answer": "Making a positive impact on society",
+      "dimension": "values"
+    },
+    "work_impact": {
+      "question": "How do you want your work to affect the world?",
+      "answer": "Build technology that improves lives",
+      "dimension": "values"
+    }
+  }
+}

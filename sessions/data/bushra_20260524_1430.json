@@ -1,0 +1,165 @@
+{
+  "name": "bushra",
+  "date": "2026-05-24 14:30",
+  "profile": {
+    "interests": [
+      "Helping and communicating with people",
+      "Arts and humanities"
+    ],
+    "skills": [
+      "Prefer non-technical work",
+      "Attention to detail and organization"
+    ],
+    "work_style": [
+      "Collaborative \u2014 I thrive working with a team",
+      "I prefer steady, predictable workloads"
+    ],
+    "values": [
+      "Job stability and security",
+      "Help individuals directly through services"
+    ],
+    "raw_answers": {
+      "work_preference": {
+        "question": "Which of these sounds most like your ideal work?",
+        "answer": "Helping and communicating with people",
+        "dimension": "interests"
+      },
+      "subject_passion": {
+        "question": "Which subject or field excites you the most?",
+        "answer": "Arts and humanities",
+        "dimension": "interests"
+      },
+      "tech_comfort": {
+        "question": "How comfortable are you with technology and programming?",
+        "answer": "Prefer non-technical work",
+        "dimension": "skills"
+      },
+      "strength": {
+        "question": "What do people most often praise you for?",
+        "answer": "Attention to detail and organization",
+        "dimension": "skills"
+      },
+      "work_style": {
+        "question": "Which work environment fits you best?",
+        "answer": "Collaborative \u2014 I thrive working with a team",
+        "dimension": "work_style"
+      },
+      "work_style_pace": {
+        "question": "How do you handle pressure and deadlines?",
+        "answer": "I prefer steady, predictable workloads",
+        "dimension": "work_style"
+      },
+      "core_value": {
+        "question": "What matters most to you in a career?",
+        "answer": "Job stability and security",
+        "dimension": "values"
+      },
+      "work_impact": {
+        "question": "How do you want your work to affect the world?",
+        "answer": "Help individuals directly through services",
+        "dimension": "values"
+      }
+    }
+  },
+  "career_matches": [
+    [
+      "Psychologist / Counselor",
+      90
+    ],
+    [
+      "Doctor / Medical Professional",
+      80
+    ],
+    [
+      "Content Creator / Writer",
+      70
+    ],
+    [
+      "UX/UI Designer",
+      40
+    ],
+    [
+      "Product Manager",
+      30
+    ],
+    [
+      "Business Analyst",
+      20
+    ],
+    [
+      "Software Engineer",
+      10
+    ],
+    [
+      "Data Scientist",
+      10
+    ],
+    [
+      "Cybersecurity Analyst",
+      10
+    ],
+    [
+      "Mechanical Engineer",
+      10
+    ]
+  ],
+  "user_skills": [
+    "Programming",
+    "Embedded systems",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Data Science",
+    "Machine learning algorithms",
+    "Deep learning",
+    "Computer Vision",
+    "NLP",
+    "Generative AI",
+    "Agentic AI",
+    "Technical Support",
+    "User Account Administration",
+    "Incident Tracking",
+    "Problem-solving"
+  ],
+  "answers": {
+    "work_preference": {
+      "question": "Which of these sounds most like your ideal work?",
+      "answer": "Helping and communicating with people",
+      "dimension": "interests"
+    },
+    "subject_passion": {
+      "question": "Which subject or field excites you the most?",
+      "answer": "Arts and humanities",
+      "dimension": "interests"
+    },
+    "tech_comfort": {
+      "question": "How comfortable are you with technology and programming?",
+      "answer": "Prefer non-technical work",
+      "dimension": "skills"
+    },
+    "strength": {
+      "question": "What do people most often praise you for?",
+      "answer": "Attention to detail and organization",
+      "dimension": "skills"
+    },
+    "work_style": {
+      "question": "Which work environment fits you best?",
+      "answer": "Collaborative \u2014 I thrive working with a team",
+      "dimension": "work_style"
+    },
+    "work_style_pace": {
+      "question": "How do you handle pressure and deadlines?",
+      "answer": "I prefer steady, predictable workloads",
+      "dimension": "work_style"
+    },
+    "core_value": {
+      "question": "What matters most to you in a career?",
+      "answer": "Job stability and security",
+      "dimension": "values"
+    },
+    "work_impact": {
+      "question": "How do you want your work to affect the world?",
+      "answer": "Help individuals directly through services",
+      "dimension": "values"
+    }
+  }
+}

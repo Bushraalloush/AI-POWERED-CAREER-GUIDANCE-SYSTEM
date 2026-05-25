@@ -1,0 +1,154 @@
+{
+  "name": "Bushra",
+  "date": "2026-05-23 14:35",
+  "profile": {
+    "interests": [
+      "Building or fixing things (software, machines, systems)",
+      "Technology and computers"
+    ],
+    "skills": [
+      "Very comfortable \u2014 I enjoy coding or technical work",
+      "Problem-solving and logical thinking"
+    ],
+    "work_style": [
+      "Quiet and independent \u2014 I focus best alone",
+      "I perform well under pressure \u2014 it motivates me"
+    ],
+    "values": [
+      "High salary and financial growth",
+      "Build technology that improves lives"
+    ],
+    "raw_answers": {
+      "work_preference": {
+        "question": "Which of these sounds most like your ideal work?",
+        "answer": "Building or fixing things (software, machines, systems)",
+        "dimension": "interests"
+      },
+      "subject_passion": {
+        "question": "Which subject or field excites you the most?",
+        "answer": "Technology and computers",
+        "dimension": "interests"
+      },
+      "tech_comfort": {
+        "question": "How comfortable are you with technology and programming?",
+        "answer": "Very comfortable \u2014 I enjoy coding or technical work",
+        "dimension": "skills"
+      },
+      "strength": {
+        "question": "What do people most often praise you for?",
+        "answer": "Problem-solving and logical thinking",
+        "dimension": "skills"
+      },
+      "work_style": {
+        "question": "Which work environment fits you best?",
+        "answer": "Quiet and independent \u2014 I focus best alone",
+        "dimension": "work_style"
+      },
+      "work_style_pace": {
+        "question": "How do you handle pressure and deadlines?",
+        "answer": "I perform well under pressure \u2014 it motivates me",
+        "dimension": "work_style"
+      },
+      "core_value": {
+        "question": "What matters most to you in a career?",
+        "answer": "High salary and financial growth",
+        "dimension": "values"
+      },
+      "work_impact": {
+        "question": "How do you want your work to affect the world?",
+        "answer": "Build technology that improves lives",
+        "dimension": "values"
+      }
+    }
+  },
+  "career_matches": [
+    [
+      "Software Engineer",
+      95
+    ],
+    [
+      "Cybersecurity Analyst",
+      92
+    ],
+    [
+      "Data Scientist",
+      90
+    ],
+    [
+      "Product Manager",
+      85
+    ],
+    [
+      "Mechanical Engineer",
+      85
+    ],
+    [
+      "UX/UI Designer",
+      80
+    ],
+    [
+      "Business Analyst",
+      70
+    ],
+    [
+      "Content Creator / Writer",
+      30
+    ],
+    [
+      "Doctor / Medical Professional",
+      20
+    ],
+    [
+      "Psychologist / Counselor",
+      10
+    ]
+  ],
+  "user_skills": [
+    "Data structures & algorithms",
+    "Version control (Git)",
+    "Testing & debugging",
+    "API development"
+  ],
+  "answers": {
+    "work_preference": {
+      "question": "Which of these sounds most like your ideal work?",
+      "answer": "Building or fixing things (software, machines, systems)",
+      "dimension": "interests"
+    },
+    "subject_passion": {
+      "question": "Which subject or field excites you the most?",
+      "answer": "Technology and computers",
+      "dimension": "interests"
+    },
+    "tech_comfort": {
+      "question": "How comfortable are you with technology and programming?",
+      "answer": "Very comfortable \u2014 I enjoy coding or technical work",
+      "dimension": "skills"
+    },
+    "strength": {
+      "question": "What do people most often praise you for?",
+      "answer": "Problem-solving and logical thinking",
+      "dimension": "skills"
+    },
+    "work_style": {
+      "question": "Which work environment fits you best?",
+      "answer": "Quiet and independent \u2014 I focus best alone",
+      "dimension": "work_style"
+    },
+    "work_style_pace": {
+      "question": "How do you handle pressure and deadlines?",
+      "answer": "I perform well under pressure \u2014 it motivates me",
+      "dimension": "work_style"
+    },
+    "core_value": {
+      "question": "What matters most to you in a career?",
+      "answer": "High salary and financial growth",
+      "dimension": "values"
+    },
+    "work_impact": {
+      "question": "How do you want your work to affect the world?",
+      "answer": "Build technology that improves lives",
+      "dimension": "values"
+    }
+  }
+}
