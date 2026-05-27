@@ -1,3 +1,4 @@
 streamlit
 groq
 cerebras_cloud_sdk
+python-dotenv
