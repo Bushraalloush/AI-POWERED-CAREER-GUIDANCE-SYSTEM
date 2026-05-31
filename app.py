@@ -23,80 +23,92 @@ st.set_page_config(
 
 apply_custom_styles()
 
+# ── Derive state flags ─────────────────────────────────────────────────────────
+has_matches  = bool(st.session_state.get("career_matches"))
+has_skills   = "user_skills" in st.session_state
+show_results = st.session_state.get("show_results", False)
+quiz_started = st.session_state.get("quiz_started", False)
+quiz_done    = st.session_state.get("quiz_complete", False)
+
+# active_page controls what shows in the main area when results are ready
+# Defaults to "results". Can be set to "chat" from the sidebar.
+if "active_page" not in st.session_state:
+    st.session_state.active_page = "results"
+
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
 
-    # App identity
+    # ── Brand ──
     st.markdown("## 🎯 Career Guidance")
-    st.caption("AI-powered career discovery platform")
-    st.divider()
+    st.caption("AI-powered career discovery")
 
-    # ── AI Provider Status ──
+    # ── AI Status ──
     provider = get_current_provider()
-    if provider != "None":
-        st.markdown(f"**AI Engine** &nbsp; `{provider}`", unsafe_allow_html=True)
+    if provider not in ("None", ""):
+        st.markdown(f"🟢 &nbsp; `{provider}`", unsafe_allow_html=True)
     else:
-        st.markdown("**AI Engine** &nbsp; `Offline`", unsafe_allow_html=True)
+        st.markdown("🔴 &nbsp; `AI Offline`", unsafe_allow_html=True)
 
     st.divider()
 
-    # ── Progress / State indicators ──
-    has_matches  = bool(st.session_state.get("career_matches"))
-    has_skills   = "user_skills" in st.session_state
-    show_results = st.session_state.get("show_results", False)
-    quiz_started = st.session_state.get("quiz_started", False)
-    quiz_done    = st.session_state.get("quiz_complete", False)
-
+    # ── Navigation ────────────────────────────────────────────────────────────
+    #
+    # HOW THIS WORKS:
+    # Each button sets st.session_state.active_page to a string value.
+    # The main content area reads that value and renders accordingly.
+    # Buttons are disabled when the section isn't accessible yet.
+    #
     st.markdown("### Navigation")
 
-    # Step indicators — show user where they are
-    def nav_item(icon, label, active=False, done=False):
-        if done:
-            color = "#10B981"   # green
-            status = "✓"
-        elif active:
-            color = "#2563EB"   # blue
-            status = "→"
-        else:
-            color = "#475569"   # grey
-            status = "○"
+    # -- Quiz --
+    quiz_label = "✅ Career Quiz" if quiz_done else ("▶ Career Quiz" if quiz_started else "○ Career Quiz")
+    if st.button(quiz_label, key="nav_quiz", use_container_width=True):
+        # Only allow going back to quiz via reset (quiz clears all state)
+        pass  # Quiz is the starting point; use Reset to go back
 
-        st.markdown(
-            f"<div style='padding:6px 0; color:{color}; font-size:0.9rem;'>"
-            f"{status} {icon} {label}</div>",
-            unsafe_allow_html=True
-        )
+    # -- Skills Assessment --
+    skills_label = "✅ Skills Assessment" if has_skills else "○ Skills Assessment"
+    skills_disabled = not has_matches
+    if st.button(skills_label, key="nav_skills", use_container_width=True, disabled=skills_disabled):
+        # Navigate back to skills screen
+        if "show_results" in st.session_state:
+            del st.session_state["show_results"]
+        if "user_skills" in st.session_state:
+            del st.session_state["user_skills"]
+        st.session_state.active_page = "results"
+        st.rerun()
 
-    nav_item("📋", "Career Quiz",
-             active=quiz_started and not quiz_done,
-             done=quiz_done)
+    # -- Career Results --
+    results_disabled = not show_results
+    results_label = "▶ Career Results" if (show_results and st.session_state.active_page == "results") else "○ Career Results"
+    if show_results:
+        results_label = "📊 Career Results"
+    if st.button(results_label, key="nav_results", use_container_width=True, disabled=results_disabled):
+        st.session_state.active_page = "results"
+        st.rerun()
 
-    nav_item("🛠️", "Skills Assessment",
-             active=has_matches and not has_skills,
-             done=has_skills)
-
-    nav_item("📊", "Career Results",
-             active=show_results and not (has_matches and not has_skills),
-             done=show_results)
-
-    nav_item("💬", "AI Career Advisor",
-             active=show_results,
-             done=False)
+    # -- AI Chat --
+    chat_disabled = not show_results
+    chat_label = "💬 Career Advisor Chat" if show_results else "○ Career Advisor Chat"
+    if st.button(chat_label, key="nav_chat", use_container_width=True, disabled=chat_disabled):
+        st.session_state.active_page = "chat"
+        st.rerun()
 
     st.divider()
 
-    # ── Session Management ──
+    # ── Session Management ─────────────────────────────────────────────────────
     st.markdown("### Sessions")
 
-    # Save current session
+    # Save current session (only relevant when there are results)
     if has_matches:
         with st.expander("💾 Save Session"):
             save_name = st.text_input(
                 "Your name",
                 placeholder="Enter your name",
-                key="sidebar_save_name"
+                key="sidebar_save_name",
+                label_visibility="collapsed"
             )
-            if st.button("Save", type="primary", key="sidebar_save_btn"):
+            if st.button("Save Results", type="primary", key="sidebar_save_btn", use_container_width=True):
                 if save_name.strip():
                     success = save_session(save_name.strip())
                     if success:
@@ -111,7 +123,7 @@ with st.sidebar:
     if sessions:
         with st.expander("📂 Load Session"):
             options = {
-                f"{s['name']} — {s['date'][:10]}": s["filename"]
+                f"{s['name']} · {s['date'][:10]} · {s['top_career']}": s["filename"]
                 for s in sessions
             }
             selected = st.selectbox(
@@ -121,11 +133,12 @@ with st.sidebar:
                 label_visibility="collapsed"
             )
             if selected != "— select —":
-                if st.button("Load", type="primary", key="sidebar_load_btn"):
+                if st.button("Load →", type="primary", key="sidebar_load_btn", use_container_width=True):
                     data = load_session(options[selected])
                     if data:
                         restore_session(data)
-                        st.success("Loaded!")
+                        st.session_state.active_page = "results"
+                        st.success("Session loaded!")
                         st.rerun()
                     else:
                         st.error("Could not load.")
@@ -134,52 +147,50 @@ with st.sidebar:
 
     # ── Reset ──
     if quiz_started or has_matches:
-        if st.button("🔄 Start Over", key="sidebar_reset"):
+        if st.button("🔄 Start Over", key="sidebar_reset", use_container_width=True):
             keys_to_clear = [
                 "quiz_started", "current_question", "answers",
                 "quiz_complete", "profile", "career_matches",
                 "show_results", "explanations", "user_skills",
-                "skill_checklist", "chat_history", "pending_response"
+                "skill_checklist", "chat_history", "active_page"
             ]
             for key in keys_to_clear:
                 if key in st.session_state:
                     del st.session_state[key]
             st.rerun()
 
-    # ── Footer ──
-    st.markdown(
-        "<div style='position:absolute; bottom:1.5rem; left:0; right:0;"
-        "text-align:center; color:#334155; font-size:0.75rem;'>"
-        "Career Guidance System v1.0</div>",
-        unsafe_allow_html=True
-    )
-
 
 # ── Main Content Area ──────────────────────────────────────────────────────────
+#
+# The sidebar sets st.session_state.active_page.
+# This block reads it and renders the correct page.
+# State guards ensure users can't skip steps.
+#
+active_page = st.session_state.get("active_page", "results")
 
+# Re-read flags after sidebar interactions
 has_matches  = bool(st.session_state.get("career_matches"))
 has_skills   = "user_skills" in st.session_state
 show_results = st.session_state.get("show_results", False)
 
-# ── Results + Chat ─────────────────────────────────────────────────────────────
 if show_results:
-    tab1, tab2 = st.tabs(["📊 Career Results", "💬 Career Advisor Chat"])
-    with tab1:
-        render_results()
-    with tab2:
+    # ── Results or Chat ──
+    if active_page == "chat":
         render_chat()
+    else:
+        render_results()
 
-# ── Skills Assessment ──────────────────────────────────────────────────────────
 elif has_matches and not has_skills:
+    # ── Skills Assessment ──
     render_skills_assessment()
 
-# ── Quiz / Landing ─────────────────────────────────────────────────────────────
 else:
-    # Welcome header — only shown on the landing/quiz screen
-    st.markdown("## Welcome to Career Guidance System")
-    st.markdown(
-        "Answer 8 short questions and discover the careers best matched "
-        "to your interests, strengths, and values."
-    )
-    st.divider()
+    # ── Quiz / Landing ──
+    if not st.session_state.get("quiz_started"):
+        st.markdown("## Welcome to Career Guidance System")
+        st.markdown(
+            "Answer 8 short questions and discover the careers best matched "
+            "to your interests, strengths, and values."
+        )
+        st.divider()
     render_quiz()
