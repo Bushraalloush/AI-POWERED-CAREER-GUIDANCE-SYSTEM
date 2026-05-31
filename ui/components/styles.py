@@ -15,14 +15,26 @@ def apply_custom_styles():
         font-family: 'Inter', sans-serif;
     }
 
-    /* ── Hide Streamlit Branding ── */
-    #MainMenu  { visibility: hidden; }
-    footer     { visibility: hidden; }
-    header     { visibility: hidden; }
+    /* ── Hide Streamlit Branding — SURGICAL: only hide branding, NOT the header ──
+       Why: hiding `header` entirely also hides the sidebar toggle button.
+       Instead we hide only the toolbar (deploy button, menu) and decoration bar.
+    ── */
+    #MainMenu                        { visibility: hidden; }
+    footer                           { visibility: hidden; }
+    [data-testid="stToolbar"]        { display: none !important; }
+    [data-testid="stDecoration"]     { display: none !important; }
+    [data-testid="stStatusWidget"]   { display: none !important; }
+
+    /* Make header transparent so it takes no visual space,
+       but the sidebar toggle button inside it stays clickable */
+    [data-testid="stHeader"] {
+        background-color: transparent !important;
+        border-bottom: none !important;
+    }
 
     /* ── Main Container ── */
     .main .block-container {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         padding-bottom: 2rem;
         max-width: 900px;
         margin: 0 auto;
@@ -184,102 +196,130 @@ def apply_custom_styles():
         font-size: 0.95rem !important;
     }
 
-    /* ── Sidebar ── */
+    /* ═══════════════════════════════════════
+       SIDEBAR
+    ═══════════════════════════════════════ */
+
     [data-testid="stSidebar"] {
-        background-color: #0B1120 !important;
+        background-color: #080E1A !important;
         border-right: 1px solid #1E293B !important;
-        min-width: 270px !important;
-        max-width: 270px !important;
+        min-width: 260px !important;
+        max-width: 260px !important;
     }
 
     /* Sidebar title */
     [data-testid="stSidebar"] h2 {
-        font-size: 1.15rem !important;
+        font-size: 1.1rem !important;
         color: #F1F5F9 !important;
         margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 
-    /* Sidebar all text */
+    /* Sidebar section label (h3) */
+    [data-testid="stSidebar"] h3 {
+        font-size: 0.7rem !important;
+        font-weight: 700 !important;
+        color: #334155 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 0.25rem !important;
+        margin-bottom: 0.1rem !important;
+    }
+
+    /* Sidebar generic text */
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] label,
-    [data-testid="stSidebar"] div {
-        color: #94A3B8 !important;
-        font-size: 0.88rem !important;
+    [data-testid="stSidebar"] label {
+        color: #64748B !important;
+        font-size: 0.82rem !important;
     }
 
-    /* Sidebar section headings (h3) */
-    [data-testid="stSidebar"] h3 {
-        font-size: 0.8rem !important;
-        font-weight: 600 !important;
+    /* Sidebar caption */
+    [data-testid="stSidebar"] .stCaption {
         color: #475569 !important;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-top: 0.5rem !important;
-        margin-bottom: 0.25rem !important;
+        font-size: 0.78rem !important;
     }
 
-    /* Sidebar buttons */
+    /* ── Sidebar buttons (nav items) ── */
     [data-testid="stSidebar"] .stButton > button {
         width: 100% !important;
         text-align: left !important;
-        background-color: #1E293B !important;
-        border: 1px solid #334155 !important;
-        color: #CBD5E1 !important;
-        font-size: 0.85rem !important;
-        padding: 0.4rem 0.8rem !important;
+        background-color: transparent !important;
+        border: none !important;
         border-radius: 6px !important;
+        color: #94A3B8 !important;
+        font-size: 0.88rem !important;
+        font-weight: 400 !important;
+        padding: 0.45rem 0.75rem !important;
+        margin-bottom: 2px !important;
+        transition: all 0.15s ease !important;
     }
 
     [data-testid="stSidebar"] .stButton > button:hover {
-        border-color: #2563EB !important;
+        background-color: #1E293B !important;
         color: #F1F5F9 !important;
-        background-color: #1E3A5F !important;
+        border: none !important;
     }
 
-    /* Sidebar primary button */
+    /* Sidebar primary buttons (Save, Load) */
     [data-testid="stSidebar"] .stButton > button[kind="primary"] {
         background-color: #2563EB !important;
         color: #FFFFFF !important;
         border: none !important;
-        width: 100% !important;
+        font-weight: 500 !important;
+        text-align: center !important;
+        padding: 0.45rem 0.75rem !important;
     }
 
-    /* Sidebar expanders */
+    [data-testid="stSidebar"] .stButton > button[kind="primary"]:hover {
+        background-color: #1D4ED8 !important;
+    }
+
+    /* Sidebar disabled buttons */
+    [data-testid="stSidebar"] .stButton > button:disabled {
+        color: #1E293B !important;
+        cursor: not-allowed !important;
+    }
+
+    /* ── Sidebar expanders ── */
     [data-testid="stSidebar"] .streamlit-expanderHeader {
         font-size: 0.85rem !important;
-        padding: 0.5rem 0.75rem !important;
-        background-color: #1E293B !important;
-        border-color: #334155 !important;
-        color: #CBD5E1 !important;
+        font-weight: 500 !important;
+        padding: 0.45rem 0.6rem !important;
+        background-color: #0F1929 !important;
+        border: 1px solid #1E293B !important;
+        color: #94A3B8 !important;
+        border-radius: 6px !important;
     }
 
     [data-testid="stSidebar"] .streamlit-expanderContent {
-        background-color: #0B1120 !important;
-        border-color: #1E293B !important;
-        padding: 0.5rem 0.75rem !important;
+        background-color: #080E1A !important;
+        border: 1px solid #1E293B !important;
+        border-top: none !important;
+        padding: 0.5rem 0.6rem !important;
+        border-radius: 0 0 6px 6px !important;
     }
 
-    /* Sidebar selectbox */
+    /* ── Sidebar selectbox ── */
     [data-testid="stSidebar"] .stSelectbox > div > div {
-        background-color: #1E293B !important;
-        border-color: #334155 !important;
+        background-color: #0F1929 !important;
+        border-color: #1E293B !important;
         color: #CBD5E1 !important;
-        font-size: 0.85rem !important;
+        font-size: 0.82rem !important;
     }
 
-    /* Sidebar text input */
+    /* ── Sidebar text input ── */
     [data-testid="stSidebar"] .stTextInput > div > div > input {
-        background-color: #1E293B !important;
-        border-color: #334155 !important;
+        background-color: #0F1929 !important;
+        border-color: #1E293B !important;
         color: #F1F5F9 !important;
         font-size: 0.85rem !important;
     }
 
-    /* Sidebar divider */
+    /* ── Sidebar divider ── */
     [data-testid="stSidebar"] hr {
         border-color: #1E293B !important;
-        margin: 0.75rem 0 !important;
+        margin: 0.6rem 0 !important;
     }
 
     /* ── Tabs ── */
