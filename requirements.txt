@@ -1,5 +1,5 @@
-streamlit==1.57.0
-groq==1.2.0
-cerebras-cloud-sdk==1.67.0
-python-dotenv==1.2.2
-pypdf==6
+streamlit>=1.45.0
+groq>=1.2.0
+cerebras-cloud-sdk>=1.67.0
+python-dotenv>=1.0.0
+pypdf>=4.0.0
