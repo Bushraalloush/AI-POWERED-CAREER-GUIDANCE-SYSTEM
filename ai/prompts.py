@@ -2,24 +2,28 @@
 
 def build_chat_system_prompt(profile: dict, matches: list, user_skills: list) -> str:
     """
-    Builds a rich system prompt that gives the AI
-    full context about the user before the chat starts.
+    Builds a rich system prompt that gives the AI full context about the user
+    before the chat starts.
+
+    Handles both match formats safely:
+    - 2-tuple: (career, score)
+    - 3-tuple: (career, score, dimensions_dict)
+    The *_ in unpacking absorbs either zero or one extra value cleanly.
     """
 
     top_careers = "\n".join([
         f"- {career}: {score}% match"
-        for career, score in matches[:3]
+        for career, score, *_ in matches[:3]
     ])
 
     skills_owned = ", ".join(user_skills) if user_skills else "Not provided"
 
-    interests   = ", ".join(profile.get("interests", []))
-    skills      = ", ".join(profile.get("skills", []))
-    work_style  = ", ".join(profile.get("work_style", []))
-    values      = ", ".join(profile.get("values", []))
+    interests  = ", ".join(profile.get("interests", []))
+    skills     = ", ".join(profile.get("skills", []))
+    work_style = ", ".join(profile.get("work_style", []))
+    values     = ", ".join(profile.get("values", []))
 
-    return f"""
-You are a professional career guidance counselor having a one-on-one session with a student.
+    return f"""You are a professional career guidance counselor having a one-on-one session with a student.
 
 You already know everything about this student from their assessment:
 
@@ -43,5 +47,4 @@ YOUR ROLE:
 - Never give generic advice — always tie it back to their specific profile
 - If they ask something unrelated to career guidance, politely redirect
 
-You are not a generic chatbot. You are their personal career advisor.
-"""
+You are not a generic chatbot. You are their personal career advisor."""
