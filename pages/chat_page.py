@@ -1,7 +1,7 @@
 # ui/pages/chat_page.py
 
 import streamlit as st
-from ai.gemini_client import ask_chat
+from ai.gemini_client import ask_gemini
 from ai.prompts import build_chat_system_prompt
 
 
@@ -11,7 +11,7 @@ def render_chat():
     using the user's profile and career results.
     """
 
-    st.markdown("## Career Advisor Chat")
+    st.markdown("## 💬 Career Advisor Chat")
     st.caption("Ask anything about your results, career path, or next steps.")
     st.divider()
 
@@ -24,52 +24,78 @@ def render_chat():
     matches     = st.session_state.get("career_matches", [])
     user_skills = st.session_state.get("user_skills", [])
 
-    # Build the system prompt once — it doesn't change during the session
-    system_prompt = build_chat_system_prompt(profile, matches, user_skills)
-
-    # Display full conversation history
+    # ── Display conversation history ──────────────────────────────────────────
     for message in st.session_state.chat_history:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
 
-    # Show suggested starter questions when chat is empty
+    # ── Show suggested questions only if chat is empty ────────────────────────
     if not st.session_state.chat_history:
         render_suggested_questions()
 
-    # Chat input field
+    # ── Handle pending response from a suggested question click ───────────────
+    #
+    # WHY THIS EXISTS:
+    # When a user clicks a suggested question, we add it to chat_history
+    # and set pending_response = True, then rerun.
+    # On the next render, this block catches it and generates the AI reply.
+    # Without this, the AI reply only triggers when the user types something.
+    #
+    if st.session_state.get("pending_response"):
+        st.session_state.pending_response = False   # clear the flag immediately
+
+        last_message = st.session_state.chat_history[-1]
+
+        # Safety check — only process if the last message is from the user
+        if last_message["role"] == "user":
+            with st.chat_message("assistant"):
+                with st.spinner("Thinking..."):
+                    response = generate_response(
+                        last_message["content"],
+                        st.session_state.chat_history,
+                        profile,
+                        matches,
+                        user_skills
+                    )
+                st.markdown(response)
+
+            st.session_state.chat_history.append({
+                "role":    "assistant",
+                "content": response
+            })
+            st.rerun()
+
+    # ── Handle typed messages ─────────────────────────────────────────────────
     user_input = st.chat_input("Ask your career advisor anything...")
 
     if user_input:
-        # Add user message to history and display it immediately
+        # Add user message to history
         st.session_state.chat_history.append({
             "role":    "user",
             "content": user_input
         })
 
+        # Show user message immediately
         with st.chat_message("user"):
             st.markdown(user_input)
 
-        # Generate and display AI response
+        # Generate and show AI response
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 response = generate_response(
                     user_input,
                     st.session_state.chat_history,
-                    system_prompt
+                    profile,
+                    matches,
+                    user_skills
                 )
+            st.markdown(response)
 
-            if response.startswith("ERROR:"):
-                # Show a red error box — do NOT save errors to chat history
-                # Also remove the user message we just added so they can retry cleanly
-                st.error(response.replace("ERROR:", "").strip())
-                st.session_state.chat_history.pop()
-            else:
-                st.markdown(response)
-                # Only save valid AI responses to history
-                st.session_state.chat_history.append({
-                    "role":    "assistant",
-                    "content": response
-                })
+        # Add AI response to history
+        st.session_state.chat_history.append({
+            "role":    "assistant",
+            "content": response
+        })
 
         st.rerun()
 
@@ -77,44 +103,45 @@ def render_chat():
 def generate_response(
     user_input: str,
     history: list,
-    system_prompt: str,
+    profile: dict,
+    matches: list,
+    user_skills: list
 ) -> str:
     """
-    Builds a properly structured messages list and sends it to the AI.
-
-    WHY this is better than the old single-string approach:
-    - Old approach: crammed system prompt + history + new message into ONE user message string
-    - New approach: system context in 'system' role, history as alternating user/assistant turns,
-      new question as the final user message
-    - LLMs are trained specifically on this format — response quality and consistency
-      improve significantly when context is sent in the correct roles
+    Sends the full conversation + user context to the AI
+    and returns a response.
     """
 
-    # Start with the system prompt in the dedicated system role
-    messages = [
-        {"role": "system", "content": system_prompt}
-    ]
+    system_prompt = build_chat_system_prompt(profile, matches, user_skills)
 
-    # Add conversation history as proper alternating turns.
-    # We exclude the last entry in history because that's the current user_input
-    # we just appended — it would appear twice if we included it here.
+    # Build conversation history as readable text
+    # We exclude the last message since it's the current question
+    history_text = ""
     for msg in history[:-1]:
-        messages.append({
-            "role":    msg["role"],      # "user" or "assistant"
-            "content": msg["content"]
-        })
+        role = "Student" if msg["role"] == "user" else "Advisor"
+        history_text += f"{role}: {msg['content']}\n"
 
-    # Add the current user question as the final turn
-    messages.append({
-        "role":    "user",
-        "content": user_input
-    })
+    full_prompt = f"""
+{system_prompt}
 
-    return ask_chat(messages)
+CONVERSATION SO FAR:
+{history_text}
+
+Student: {user_input}
+
+Advisor:"""
+
+    return ask_gemini(full_prompt)
 
 
 def render_suggested_questions():
-    """Shows clickable starter questions when the chat history is empty."""
+    """
+    Shows clickable starter questions when chat history is empty.
+    
+    HOW IT WORKS:
+    Clicking a question → adds it to chat_history + sets pending_response flag
+    → st.rerun() → render_chat() detects the flag → generates AI reply
+    """
 
     st.markdown("**Not sure where to start? Try one of these:**")
 
@@ -132,8 +159,11 @@ def render_suggested_questions():
         col = cols[i % 2]
         with col:
             if st.button(question, key=f"suggested_{i}"):
+                # Add the question as a user message
                 st.session_state.chat_history.append({
                     "role":    "user",
                     "content": question
                 })
+                # Signal that we need an AI response on the next render
+                st.session_state.pending_response = True
                 st.rerun()
