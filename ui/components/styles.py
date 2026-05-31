@@ -24,7 +24,7 @@ def apply_custom_styles():
     .main .block-container {
         padding-top: 2rem;
         padding-bottom: 2rem;
-        max-width: 860px;
+        max-width: 900px;
         margin: 0 auto;
     }
 
@@ -186,15 +186,100 @@ def apply_custom_styles():
 
     /* ── Sidebar ── */
     [data-testid="stSidebar"] {
-        background-color: #0F172A !important;
+        background-color: #0B1120 !important;
         border-right: 1px solid #1E293B !important;
-        min-width: 260px !important;
+        min-width: 270px !important;
+        max-width: 270px !important;
     }
 
+    /* Sidebar title */
+    [data-testid="stSidebar"] h2 {
+        font-size: 1.15rem !important;
+        color: #F1F5F9 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Sidebar all text */
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
-    [data-testid="stSidebar"] label {
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] div {
         color: #94A3B8 !important;
+        font-size: 0.88rem !important;
+    }
+
+    /* Sidebar section headings (h3) */
+    [data-testid="stSidebar"] h3 {
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        color: #475569 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+
+    /* Sidebar buttons */
+    [data-testid="stSidebar"] .stButton > button {
+        width: 100% !important;
+        text-align: left !important;
+        background-color: #1E293B !important;
+        border: 1px solid #334155 !important;
+        color: #CBD5E1 !important;
+        font-size: 0.85rem !important;
+        padding: 0.4rem 0.8rem !important;
+        border-radius: 6px !important;
+    }
+
+    [data-testid="stSidebar"] .stButton > button:hover {
+        border-color: #2563EB !important;
+        color: #F1F5F9 !important;
+        background-color: #1E3A5F !important;
+    }
+
+    /* Sidebar primary button */
+    [data-testid="stSidebar"] .stButton > button[kind="primary"] {
+        background-color: #2563EB !important;
+        color: #FFFFFF !important;
+        border: none !important;
+        width: 100% !important;
+    }
+
+    /* Sidebar expanders */
+    [data-testid="stSidebar"] .streamlit-expanderHeader {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.75rem !important;
+        background-color: #1E293B !important;
+        border-color: #334155 !important;
+        color: #CBD5E1 !important;
+    }
+
+    [data-testid="stSidebar"] .streamlit-expanderContent {
+        background-color: #0B1120 !important;
+        border-color: #1E293B !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    /* Sidebar selectbox */
+    [data-testid="stSidebar"] .stSelectbox > div > div {
+        background-color: #1E293B !important;
+        border-color: #334155 !important;
+        color: #CBD5E1 !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Sidebar text input */
+    [data-testid="stSidebar"] .stTextInput > div > div > input {
+        background-color: #1E293B !important;
+        border-color: #334155 !important;
+        color: #F1F5F9 !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Sidebar divider */
+    [data-testid="stSidebar"] hr {
+        border-color: #1E293B !important;
+        margin: 0.75rem 0 !important;
     }
 
     /* ── Tabs ── */
@@ -202,12 +287,14 @@ def apply_custom_styles():
         background-color: #1E293B !important;
         border-radius: 8px !important;
         padding: 4px !important;
+        gap: 4px !important;
     }
 
     .stTabs [data-baseweb="tab"] {
         color: #94A3B8 !important;
         font-weight: 500 !important;
         border-radius: 6px !important;
+        font-size: 0.9rem !important;
     }
 
     .stTabs [aria-selected="true"] {
@@ -222,6 +309,18 @@ def apply_custom_styles():
         border-radius: 10px !important;
         padding: 0.8rem !important;
         margin-bottom: 0.5rem !important;
+    }
+
+    /* ── Chat Input ── */
+    [data-testid="stChatInput"] {
+        background-color: #1E293B !important;
+        border: 1px solid #334155 !important;
+        border-radius: 10px !important;
+    }
+
+    [data-testid="stChatInput"] textarea {
+        color: #F1F5F9 !important;
+        font-size: 0.9rem !important;
     }
 
     </style>
