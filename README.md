@@ -221,7 +221,7 @@ Groq is fast and has a generous free tier but can rate-limit under load. Cerebra
 ## 👩‍💻 Author
 
 **Bushra**
-Computer Science — Graduation Capstone Project
+Computer Engineer — Graduation Capstone Project
 Built solo over 4 weeks · June 2026
 
 ---
