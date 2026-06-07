@@ -18,10 +18,6 @@ The **AI Career Guidance System** is a full-stack web application that takes a s
 
 Built as a solo graduation capstone project in 4 weeks.
 
-**[🚀 Live Demo →]([https://your-app.streamlit.app](https://ai-powered-career-guidance-system-fyaby4rghms4ff3p4ku7bo.streamlit.app/))**
-
----
-
 ## ✨ Features
 
 ### 6-Stage User Journey
