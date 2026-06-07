@@ -40,7 +40,6 @@ Built as a solo graduation capstone project in 4 weeks.
 - 🗺️ **Learning Roadmap** — 4-phase plan: Foundation → Core → Specialization → Job-Ready
 - 📚 **Learning Resources** — Courses, books, practice platforms, communities
 - 🎤 **Interview Prep** — 5 tailored questions with answering tips
-- ❌ **Careers to Avoid** — Bottom matches explained honestly
 
 ### Other Capabilities
 
